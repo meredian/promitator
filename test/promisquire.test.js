@@ -1,8 +1,4 @@
-var chai = require('chai');
-var expect = chai.expect;
-var chaiAsPromised = require('chai-as-promised');
-chai.use(chaiAsPromised);
-chai.should();
+var expect = require('./helper').expect;
 
 var isPromise = require('is-promise');
 var Promisquire = require('../index');
@@ -16,9 +12,9 @@ AsyncApiObject.prototype.get = function() {
 };
 
 var Initializer = function(callback) {
-    setTimeout(() => {
+    process.nextTick(() => {
         callback(null, new AsyncApiObject(22));
-    }, 10);
+    });
 };
 
 describe('Promisquire', function() {

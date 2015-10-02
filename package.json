@@ -4,7 +4,7 @@
   "description": "Promise helper for delayed initialization",
   "main": "index.js",
   "scripts": {
-    "test": "node_modules/.bin/mocha --harmony --harmony_proxies ./test/ --recursive -R spec"
+    "test": "node_modules/.bin/mocha --harmony --harmony_proxies ./test/**.test.js --recursive -R spec"
   },
   "keywords": [
     "promise",
