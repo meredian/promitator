@@ -1,0 +1,26 @@
+{
+  "name": "node-promisquire",
+  "version": "0.1.0",
+  "description": "Promise helper for delayed initialization",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "promise",
+    "require",
+    "initialize"
+  ],
+  "engines": {
+    "node": "^4.0"
+  },
+  "author": "Anton Sidelnikov <ndmeredian@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "harmony-reflect": "^1.4.2"
+  },
+  "devDependencies": {
+    "chai": "^3.3.0",
+    "mocha": "^2.3.3"
+  }
+}
