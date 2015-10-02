@@ -18,14 +18,16 @@
   "license": "MIT",
   "dependencies": {
     "es6-promisify": "^3.0.0",
+    "is-promise": "^2.1.0",
     "harmony-reflect": "^1.4.2"
   },
   "devDependencies": {
     "chai": "^3.3.0",
     "chai-as-promised": "^5.1.0",
+    "harmonize": "^1.4.4",
     "install": "^0.1.8",
-    "is-promise": "^2.1.0",
     "mocha": "^2.3.3",
+    "mongodb": "^2.0.45",
     "npm": "^3.3.5"
   }
 }
