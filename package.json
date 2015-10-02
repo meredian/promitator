@@ -4,7 +4,7 @@
   "description": "Promise helper for delayed initialization",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node_modules/.bin/mocha --harmony --harmony_proxies ./test/ --recursive -R spec"
   },
   "keywords": [
     "promise",
@@ -17,10 +17,15 @@
   "author": "Anton Sidelnikov <ndmeredian@gmail.com>",
   "license": "MIT",
   "dependencies": {
+    "es6-promisify": "^3.0.0",
     "harmony-reflect": "^1.4.2"
   },
   "devDependencies": {
     "chai": "^3.3.0",
-    "mocha": "^2.3.3"
+    "chai-as-promised": "^5.1.0",
+    "install": "^0.1.8",
+    "is-promise": "^2.1.0",
+    "mocha": "^2.3.3",
+    "npm": "^3.3.5"
   }
 }
