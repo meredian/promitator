@@ -1,6 +1,6 @@
 require('harmonize')();
 
-var promitator = require('../../index');
+var promitator = require('../index');
 
 var MongoClient = require('mongodb').MongoClient;
 var url = 'mongodb://127.0.0.1:27017/node_promisquire_test';
@@ -8,6 +8,11 @@ var url = 'mongodb://127.0.0.1:27017/node_promisquire_test';
 var db = module.exports = promitator(function(callback) {
     return MongoClient.connect(url, callback);
 });
+
+// Usual flow requires preitialization, like:
+// MongoClient.connect(url).then(function(db) {
+//     db.collection('samples')....
+// })
 
 // Promise as initializer works as well
 // var db = promitator(MongoClient.connect(url));
