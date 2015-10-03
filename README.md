@@ -1,9 +1,9 @@
 Promitator
 ==========
 
-Promitator is a small module that helps to work with promise-based API by proviting generic mechanism for lazy initialization. It is based on ES6 Promise, so for now it will work with Node 4.x only in harmony mode. This is kind of experimental work for exploring JS metaprogramming.
+Promitator is a small module that helps to work with promise-based API by providing generic mechanism for lazy initialization. It is based on ES6 Promise, so for now it will work with Node 4.x only in harmony mode. This is kind of experimental work for exploring JS metaprogramming.
 
-Module concept is quite simple. Nowadays there is a lot of convineint promise-based APIs, or APIs, that we can promisify. But sometimes they do require extra initialization step, which is not that convenient. Everybody like to use get rid of unnecessary routines and boilerplate.
+Module concept is quite simple. Nowadays there is a lot of convenient promise-based APIs, or APIs, that we can promisify. But sometimes they do require extra initialization step, which is not that convenient. Everybody like to use get rid of unnecessary routines and boilerplate.
 
 Promitator is a single function, that wraps any async function (or promise) into promise, that pretends to be a resulting object and imitates all of it's method (via ES6 proxy).
 
@@ -45,10 +45,9 @@ var objProxy = promitator(Promise.resolve({
 objProxy.test().then((res) => {
     console.log(res); // Wow, this is realy test!
 });
-
 ```
 
-Every call on promitated object returns a new promise proxy, which emitates new object, which will be returned by result of emitated call. So you can easilly chain proxies. This can be applied to sync methods as well.
+Every call on promitated object returns a new promise proxy, which imitates new object, which will be returned by result of imitated call. So you can easily chain proxies. This can be applied to sync methods as well.
 
 ```javascript
 var deep = function deep(level) {
@@ -66,18 +65,18 @@ promitator(deep(0)).deep().deep().deep().deep().then((res) => {
 ```
 
 If promise proxy stands in your way, you can easilly get access to original object just by resolving promise
+
 ```javascript
 objProxy.then((realObject) => {
     // whatever
 });
 ```
+The most prominent way of using promitated objects for me is passing them to `module.exports`. Since module system in Node.js is quite powerful, is has problems while dealing with async initialization. Of course you can pass just a promise, but it will force you to use `.then()` method each time you want to use object's method.
 
-The most prominent way of using promitated objects for me is passing them to `module.exports`. Since module system in Node.js is quite powerful, is has problems while dealing with async initialization. Of cource you can pass just a promise, but it will force you to use `.then()` method each time you want to use this object's method.
+Finally here is real mongodb-native example, which is fully working and helps to understand this idea
 
-Finally here is real `mongodb-native` example, which is fully working and helps to understand this idea
 ```javascript
-
-// Usual flow requires preitialization, like:
+// Usual flow requires pre initialization, like:
 // MongoClient.connect(url).then(function(db) {
 //     db.collection('samples')....
 // })
@@ -106,7 +105,15 @@ db.collection('samples').insertOne({
     process.exit(1);
 });
 ```
+## Trade-offs
+
+* Requires promise or sync API for object to work properly. Does NOT promisifies callback methods, you have to do it yourself at first
+* Sync methods becomes promisified (In fact module just prepends init promise to any call, so sync calls are also resolved by a promise)
+* Depending on what promises you use, you could get conflict between promise api. Since proxy tries to be a promise at first, it can shadow some imitated object methods. I stuck into bluebirds's Promise#get method once.
+* As expected, it slows code a bit. But not that much if we speak about async network operations. (Maybe you'll help me to create good benchmark)
+
 ## License
+
 The MIT License (MIT)
 
 Copyright (c) 2015 Anton Sidelnikov
