@@ -1,7 +1,7 @@
 var expect = require('./helper').expect;
 
 var isPromise = require('is-promise');
-var Promisquire = require('../index');
+var promitator = require('../index');
 
 var AsyncApiObject = function(initValue) {
     this.state = initValue;
@@ -17,9 +17,9 @@ var Initializer = function(callback) {
     });
 };
 
-describe('Promisquire', function() {
+describe('promitator', function() {
     beforeEach(function() {
-        this.obj = Promisquire(Initializer);
+        this.obj = promitator(Initializer);
     });
 
     it('behaves as promise on direct request', function() {

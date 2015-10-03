@@ -1,5 +1,5 @@
 {
-  "name": "node-promisquire",
+  "name": "promitator",
   "version": "0.1.0",
   "description": "Promise helper for delayed initialization",
   "main": "index.js",
@@ -9,6 +9,7 @@
   },
   "keywords": [
     "promise",
+    "promisify",
     "require",
     "initialize"
   ],

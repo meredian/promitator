@@ -1,7 +1,7 @@
 require('harmonize')();
 
 var Benchmark = require('benchmark');
-var promisquire = require('../index');
+var promitator = require('../index');
 
 var AsyncApiObject = function(value) {
     this.value = value;
@@ -16,7 +16,7 @@ AsyncApiObject.prototype.inc = function(inc) {
 };
 
 var object = new AsyncApiObject(0);
-var promisquireObject = promisquire(Promise.resolve(new AsyncApiObject(0)));
+var promitatorObject = promitator(Promise.resolve(new AsyncApiObject(0)));
 
 var suite = new Benchmark.Suite;
 
@@ -34,10 +34,10 @@ suite.add('object', {
         });
     }
 });
-suite.add('promisqure', {
+suite.add('promitator', {
     defer: true,
     fn: function(deferred) {
-        promisquireObject.inc(10).then(function(res) {
+        promitatorObject.inc(10).then(function(res) {
             return res.inc(10);
         }).then(function(res) {
             return res.inc(10);
@@ -48,10 +48,10 @@ suite.add('promisqure', {
         });
     }
 });
-suite.add('promisquire_magic', {
+suite.add('promitator_magic', {
     defer: true,
     fn: function(deferred) {
-        promisquireObject.inc(10).inc(10).inc(10).get().then(function() {
+        promitatorObject.inc(10).inc(10).inc(10).get().then(function() {
             deferred.resolve();
         });
     }

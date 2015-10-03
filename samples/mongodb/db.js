@@ -1,16 +1,16 @@
 require('harmonize')();
 
-var Promisquire = require('../../index');
+var promitator = require('../../index');
 
 var MongoClient = require('mongodb').MongoClient;
 var url = 'mongodb://127.0.0.1:27017/node_promisquire_test';
 
-var db = module.exports = Promisquire(function(callback) {
+var db = module.exports = promitator(function(callback) {
     return MongoClient.connect(url, callback);
 });
 
 // Promise as initializer works as well
-// var db = Promisquire(MongoClient.connect(url));
+// var db = promitator(MongoClient.connect(url));
 
 db.collection('samples').insertOne({
     message: 'This is sample; Generated at ' + Date.now()
