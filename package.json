@@ -4,7 +4,8 @@
   "description": "Promise helper for delayed initialization",
   "main": "index.js",
   "scripts": {
-    "test": "node_modules/.bin/mocha --harmony --harmony_proxies ./test/**.test.js --recursive -R spec"
+    "test": "node_modules/.bin/mocha --harmony --harmony_proxies ./test/**.test.js --recursive -R spec",
+    "benchmark": "node benchmark/index.js"
   },
   "keywords": [
     "promise",
@@ -22,6 +23,8 @@
     "harmony-reflect": "^1.4.2"
   },
   "devDependencies": {
+    "benchmark": "^1.0.0",
+    "bluebird": "^2.10.2",
     "chai": "^3.3.0",
     "chai-as-promised": "^5.1.0",
     "harmonize": "^1.4.4",
