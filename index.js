@@ -9,7 +9,7 @@ function createInterimProxy(targetPromise) {
             if (targetPromise[name] !== void 0) {
                 // Object should primarily behave as promise,
                 // including prototypes and getters
-                let ref = targetPromise[name];
+                const ref = targetPromise[name];
                 if (typeof ref === 'function') {
                     return function() {
                         return ref.apply(targetPromise, arguments);
@@ -20,7 +20,12 @@ function createInterimProxy(targetPromise) {
             }
             return function() {
                 return createInterimProxy(targetPromise.then((obj) => {
-                    return obj[name].apply(obj, arguments);
+                    const ref = obj[name];
+                    if (typeof ref === 'function') {
+                        return ref.apply(obj, arguments);
+                    } else {
+                        return ref;
+                    }
                 }));
             };
         }
