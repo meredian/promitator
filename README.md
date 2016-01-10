@@ -1,7 +1,7 @@
 Promitator
 ==========
 
-Promitator is a small module that helps to work with promise-based API by providing generic mechanism for lazy initialization. It is based on ES6 Promise, so for now it will work with Node 4.x only in harmony mode. This is kind of experimental work for exploring JS metaprogramming.
+Promitator is a small module that helps to work with promise-based API by providing generic mechanism for lazy initialization. It is based on ES6 Proxy, so for now it will work with Node 4.x only in harmony mode. This is kind of experimental work for exploring JS metaprogramming.
 
 Module concept is quite simple. Nowadays there is a lot of convenient promise-based APIs, or APIs, that we can promisify. But sometimes they do require extra initialization step, which is not that convenient. Everybody like to use get rid of unnecessary routines and boilerplate.
 
