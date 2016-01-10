@@ -3,7 +3,7 @@ require('harmonize')();
 var promitator = require('../index');
 
 var MongoClient = require('mongodb').MongoClient;
-var url = 'mongodb://127.0.0.1:27017/node_promisquire_test';
+var url = 'mongodb://127.0.0.1:27017/node_promitator_test';
 
 var db = module.exports = promitator(function(callback) {
     return MongoClient.connect(url, callback);
